@@ -55,6 +55,7 @@ export class ProductsController {
 
   @Post()
   create(@Body() payload: CreateProductDto) {
+    // para commit
     // return {
     //   message: 'accion de crear',
     //   payload,
