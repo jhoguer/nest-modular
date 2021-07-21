@@ -14,21 +14,25 @@ import {
 } from '@nestjs/common';
 
 import { Response } from 'express';
+import { ApiTags, ApiOperation } from '@nestjs/swagger';
+
 import { ParseIntPipe } from '../../common/parse-int.pipe';
-import { CreateProductDto, UpdateProductDto } from '../dtos/products.dtos';
+import { CreateProductDto, UpdateProductDto } from '../dtos/products.dto';
 
 import { ProductsService } from './../services/products.service';
 
+@ApiTags('Products')
 @Controller('products')
 export class ProductsController {
   constructor(private productsService: ProductsService) {}
 
   @Get()
-  getProducts(
-    @Query('limit') limit = 100,
-    @Query('offset') offset = 0,
-    @Query('brand') brand: string,
-  ) {
+  @ApiOperation({ summary: 'List of all products' })
+  getProducts() {
+    // @Query('limit') limit = 100,
+    // @Query('offset') offset = 0,
+    // @Query('brand') brand: string,
+
     // return {
     //   message: `products limit=> ${limit} offset=> ${offset} brand=> ${brand}`,
     // };
